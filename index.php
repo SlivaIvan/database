@@ -13,10 +13,41 @@ $order_date = date('Y-m-d H:i:s', strtotime($date_str));
 
 //Примеры создания таблиц
 
-/*$sql = ' id SERIAL PRIMARY KEY,
-    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    client_id INTEGER REFERENCES client(id),
-    shop_id INTEGER REFERENCES shop(id)';
+/*$sqlClient = ' 
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    phone TEXT NOT NULL
+
+sqlOrder = ' 
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    shop_id INTEGER NOT NULL,
+    client_id INTEGER NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES client(id),
+    FOREIGN KEY (shop_id) REFERENCES shop(id)';
+
+sqlOrderProduct = '
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    order_id INTEGER NOT NULL,
+    product_id INTEGER NOT NULL,
+    quantity INTEGER NOT NULL,
+    price_at_order REAL NOT NULL,
+    PRIMARY KEY (order_id, product_id),
+    FOREIGN KEY (order_id) REFERENCES "order"(id),
+    FOREIGN KEY (product_id) REFERENCES product(id)';
+
+sqlProduct = ' 
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    count INTEGER NOT NULL,
+    FOREIGN KEY (shop_id) REFERENCES shop(id)
+
+sqlShop = ' 
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    address TEXT NOT NULL;
+
 
 $db->createTable('product', $sql);*/
 
