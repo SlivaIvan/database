@@ -31,7 +31,7 @@ class Database {
         }
     }
 
-    public function insert($table, $data) {
+    public function insert($table, array $data) {
         try {
             $columns = implode(', ', array_keys($data));
             $placeholders = ':' . implode(', :', array_keys($data)); 

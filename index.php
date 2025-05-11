@@ -13,12 +13,12 @@ $order_date = date('Y-m-d H:i:s', strtotime($date_str));
 
 //Примеры создания таблиц
 
-$sql = ' id SERIAL PRIMARY KEY,
+/*$sql = ' id SERIAL PRIMARY KEY,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     client_id INTEGER REFERENCES client(id),
     shop_id INTEGER REFERENCES shop(id)';
 
-$db->createTable('product', $sql);
+$db->createTable('product', $sql);*/
 
 
 // Примеры данных запысываемых в таблицу
@@ -33,11 +33,11 @@ $dataOrder = [
     'created_at' => $order_date,
 ];
 
-$dataOrdedProd = [
-    'order_id' => 3,
-    'product_id' => 2,
+$data = [
+    'order_id' => 4,
+    'product_id' => 9,
     'quantity' => 1,
-    'price_at_order' => 15000,
+    'price_at_order' => 1700
 ];
 
 $dataProduct = [
@@ -59,9 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 //Метод удаления из таблицы
-//$db->delete($table, 7);
+//$db->delete($table, 11);
 
-$db->insert('client', $data);
 ?>
 
 <!-- HTML форма для отправки данных -->
